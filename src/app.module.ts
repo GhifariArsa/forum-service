@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppConfigModule } from './app-config/app-config.module';
+import { ForumModule } from './forum/forum.module';
+import { Comments } from './typeorm/entity/Comments';
+import { Discussions } from './typeorm/entity/Discussion';
 
 @Module({
   imports: [
@@ -12,9 +15,10 @@ import { AppConfigModule } from './app-config/app-config.module';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [],
+      entities: [Comments, Discussions],
       synchronize: process.env.DATABASE_SYNC === 'true',
     }),
+    ForumModule,
   ],
   controllers: [],
   providers: [],
