@@ -30,4 +30,7 @@ export class Comments {
 
   @OneToMany(() => Comments, (comment) => comment.parentComment)
   childComments: Comments[];
+
+  @Column()
+  userId: number;
 }

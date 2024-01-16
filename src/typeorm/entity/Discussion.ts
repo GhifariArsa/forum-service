@@ -17,4 +17,7 @@ export class Discussions {
 
   @OneToMany(() => Comments, (comment) => comment.discussion)
   comments: Comments[];
+
+  @Column()
+  userId: number;
 }
