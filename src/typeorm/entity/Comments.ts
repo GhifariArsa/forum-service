@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Discussions } from './Discussion';
+import { Upvote } from './Upvote';
 
 @Entity({ name: 'comments' })
 export class Comments {
@@ -30,6 +31,9 @@ export class Comments {
 
   @OneToMany(() => Comments, (comment) => comment.parentComment)
   childComments: Comments[];
+
+  @OneToMany(() => Upvote, (upvote) => upvote.comment)
+  upvotes: Upvote[];
 
   @Column()
   userId: number;

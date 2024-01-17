@@ -4,6 +4,7 @@ import { AppConfigModule } from './app-config/app-config.module';
 import { ForumModule } from './forum/forum.module';
 import { Comments } from './typeorm/entity/Comments';
 import { Discussions } from './typeorm/entity/Discussion';
+import { Upvote } from './typeorm/entity/Upvote';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { Discussions } from './typeorm/entity/Discussion';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [Comments, Discussions],
+      entities: [Comments, Discussions, Upvote],
       synchronize: process.env.DATABASE_SYNC === 'true',
     }),
     ForumModule,
