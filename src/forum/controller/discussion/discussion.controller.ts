@@ -2,6 +2,8 @@ import {
   Body,
   Controller,
   Get,
+  Param,
+  ParseIntPipe,
   Post,
   UsePipes,
   ValidationPipe,
@@ -22,5 +24,10 @@ export class DiscussionController {
   @UsePipes(new ValidationPipe())
   createDiscussion(@Body() createDiscussionDto: CreateDiscussionDto) {
     return this.discussionService.createDiscussion(createDiscussionDto);
+  }
+
+  @Get(':id/upvote')
+  getUpvotesDiscussion(@Param('id', ParseIntPipe) id: number) {
+    return this.discussionService.getNumberOfUpvotes(id);
   }
 }
